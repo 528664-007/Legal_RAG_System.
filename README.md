@@ -79,7 +79,7 @@ Our system solves these by retrieving small chunks for precise matching while re
 
 ### Step 1: Clone the Repository
 bash
-git clone https://github.com/yourusername/legal-rag-system.git
+git clone https://github.com/528664-007/Legal-RAG-System.git
 cd legal-rag-system
 
 
