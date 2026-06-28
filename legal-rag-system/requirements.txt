@@ -1,0 +1,27 @@
+# Core RAG Framework
+langchain==0.2.11
+langchain-community==0.2.10
+langchain-huggingface==0.0.3
+langchain-chroma==0.1.2
+langchain-groq==0.1.9
+
+# Vector Database
+chromadb==0.5.3
+
+# Embeddings
+sentence-transformers==3.0.1
+huggingface-hub==0.23.4
+
+# BM25 & NLP
+rank-bm25==0.2.2
+nltk==3.8.1
+
+# LLM Providers
+groq==0.9.0
+
+# Utilities
+python-dotenv==1.0.1
+pydantic==2.7.4
+rich==13.7.1
+typer==0.12.3
+pytest==8.2.0
