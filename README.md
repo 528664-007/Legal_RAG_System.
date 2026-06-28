@@ -77,15 +77,13 @@ Our system solves these by retrieving small chunks for precise matching while re
 - Git
 
 ### Step 1: Clone the Repository
-```bash
-git clone https://github.com/528664-007/Legal-RAG-System.git
+
+git clone https://github.com/528664-007/legal-rag-system.git
 cd legal-rag-system
 
 
-```
 ### Step 2: Create Virtual Environment
-```bash
-```
+
 # Linux/Mac
 python -m venv venv
 source venv/bin/activate
@@ -96,15 +94,13 @@ venv\Scripts\activate
 
 
 ### Step 3: Install Dependencies
-```bash
+
 pip install -r requirements.txt
 
 
-```
 ### Step 4: Configure Environment
-```bash
+
 cp .env.example .env
-```
 # Edit .env with your settings
 
 
@@ -113,8 +109,7 @@ cp .env.example .env
 <details>
 <summary><b>Option A: Groq (Recommended - Free Tier)</b></summary>
 
-```bash
-```
+
 # 1. Get a free API key at https://console.groq.com
 # 2. Add to .env:
 GROQ_API_KEY=gsk_your_key_here
@@ -129,8 +124,7 @@ pip install groq
 <details>
 <summary><b>Option B: Ollama (Local & Private)</b></summary>
 
-```bash
-```
+
 # 1. Install Ollama
 curl -fsSL https://ollama.ai/install.sh | sh
 
@@ -146,8 +140,7 @@ LLM_PROVIDER=ollama
 <details>
 <summary><b>Option C: OpenAI</b></summary>
 
-```bash
-```
+
 # Add to .env:
 OPENAI_API_KEY=sk-your_key_here
 LLM_PROVIDER=openai
@@ -159,31 +152,27 @@ LLM_PROVIDER=openai
 ## 🎯 Quick Start
 
 ### Run the Demo
-```bash
+
 python main.py --demo
 
 This ingests 3 sample legal documents and runs 7 test queries.
 
-```
 ### Interactive Mode
-```bash
+
 python main.py
 
 Start an interactive session with pre-loaded sample documents.
 
-```
 ### Single Query
-```bash
+
 python main.py --query "What are the remedies for breach of confidentiality?"
 
 
-```
 ### Custom Document
-```bash
+
 python main.py --ingest my_contract.txt --title "Service Agreement"
 
 
-```
 ---
 
 ## 📚 Usage
@@ -211,10 +200,9 @@ Legal Query > exit          # Exit
 
 
 ### Python API
-```python
+python
 from legal_rag import LegalRAGPipeline
 
-```
 # Initialize
 pipeline = LegalRAGPipeline()
 
@@ -374,8 +362,7 @@ Here are categorized queries to test the system's capabilities:
 
 ### 📋 NDA & Confidentiality
 
-```python
-```
+python
 # Core Confidentiality
 "What are the obligations of the receiving party regarding confidential information?"
 "What constitutes confidential information under the NDA?"
@@ -403,8 +390,7 @@ Here are categorized queries to test the system's capabilities:
 
 ### ⚖️ Trade Secrets (California Civil Code)
 
-```python
-```
+python
 # Definitions
 "What constitutes a trade secret under California law?"
 "What is the legal definition of misappropriation of trade secrets?"
@@ -427,8 +413,7 @@ Here are categorized queries to test the system's capabilities:
 
 ### 💼 Employment Agreement
 
-```python
-```
+python
 # Employment Terms
 "What are the duties of the employee under the employment agreement?"
 "How long does the employment agreement last?"
@@ -472,8 +457,7 @@ Here are categorized queries to test the system's capabilities:
 
 ### 🔍 Cross-Document Comparisons
 
-```python
-```
+python
 # NDA vs Statute
 "How does the NDA definition of confidential information compare to trade secret law?"
 "Are the remedies in the NDA broader than California statutory remedies?"
@@ -492,7 +476,7 @@ Here are categorized queries to test the system's capabilities:
 
 ### 🎯 Practical Scenarios
 
-```python
+python
 "If an employee accidentally emails confidential information to a competitor, what remedies apply?"
 "Can a former employee use trade secrets at a new job?"
 "What happens if someone reverse engineers a trade secret?"
@@ -501,11 +485,369 @@ Here are categorized queries to test the system's capabilities:
 "What are the maximum potential damages for breaching the NDA?"
 "What steps must be taken to maintain trade secret protection?"
 
+Here are the formatted outputs from your Legal RAG System to add to the README file:
 
-```
+markdown
+## 📸 System Outputs
+
+### System Initialization
+
+
+╔══════════════════════════════════════╗
+║  ⚖️  LEGAL RAG SYSTEM v1.0  ⚖️       ║
+║  Groq-Powered Legal Document Analysis ║
+║  Parent-Child Chunking + Hybrid Search║
+╚══════════════════════════════════════╝
+           Legal RAG System Configuration            
+┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Category   ┃ Setting       ┃ Value                ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━┩
+│ LLM        │ Provider      │ groq                 │
+│            │ Model         │ llama-3.1-8b-instant │
+│            │ API Key       │ ****mgE9             │
+│            │ Temperature   │ 0.1                  │
+│ Embeddings │ Model         │ all-MiniLM-L6-v2     │
+│            │ Device        │ cpu                  │
+│ Chunking   │ Child Size    │ 250                  │
+│            │ Parent Size   │ 1200                 │
+│ Retrieval  │ Vector Weight │ 0.7                  │
+│            │ BM25 Weight   │ 0.3                  │
+│            │ Top-K         │ 5                    │
+│ Storage    │ Persist Dir   │ ./chroma_db          │
+└────────────┴───────────────┴──────────────────────┘
+Initializing components...
+
+🔄 Loading Embedding Model
+   Model: all-MiniLM-L6-v2
+   Device: cpu
+   Info: Fast, lightweight (80MB), good general purpose
+✅ Embedding model loaded successfully
+   Embedding dimension: 384
+
+🤖 Initializing LLM: groq/llama-3.1-8b-instant
+   🔑 Using Groq API key: ****mgE9
+   📡 Model: llama-3.1-8b-instant
+   ✅ Groq client ready (LangChain Runnable compatible)
+✅ LLM initialized: groq/llama-3.1-8b-instant
+   🔍 Testing API connection...
+   📩 Response: OK...
+   ✅ API connection successful!
+✅ All components initialized
+
+
+### Document Processing
+
+
+📚 Processing 3 documents...
+
+📄 Processing: Confidentiality and Non-Disclosure Agreement
+   Original length: 4,455 characters
+                   Document Processing Summary                    
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric          ┃ Value                                        ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Document Title  │ Confidentiality and Non-Disclosure Agreement │
+│ Original Length │ 4,455 chars                                  │
+│ Parent Chunks   │ 5                                            │
+│ Child Chunks    │ 30                                           │
+│ Avg Parent Size │ 137 words                                    │
+│ Avg Child Size  │ 25 words                                     │
+│ Clause Types    │ confidentiality, general                     │
+└─────────────────┴──────────────────────────────────────────────┘
+
+📄 Processing: California Civil Code - Trade Secrets (3426.1-3426.4)
+   Original length: 3,018 characters
+                        Document Processing Summary                        
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric          ┃ Value                                                 ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Document Title  │ California Civil Code - Trade Secrets (3426.1-3426.4) │
+│ Original Length │ 3,018 chars                                           │
+│ Parent Chunks   │ 3                                                     │
+│ Child Chunks    │ 19                                                    │
+│ Avg Parent Size │ 157 words                                             │
+│ Avg Child Size  │ 26 words                                              │
+│ Clause Types    │ confidentiality, termination                          │
+└─────────────────┴───────────────────────────────────────────────────────┘
+
+📄 Processing: Employment Agreement - TechCorp Inc.
+   Original length: 3,832 characters
+               Document Processing Summary                
+┏━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric          ┃ Value                                ┃
+┡━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Document Title  │ Employment Agreement - TechCorp Inc. │
+│ Original Length │ 3,832 chars                          │
+│ Parent Chunks   │ 4                                    │
+│ Child Chunks    │ 25                                   │
+│ Avg Parent Size │ 142 words                            │
+│ Avg Child Size  │ 24 words                             │
+│ Clause Types    │ confidentiality, termination         │
+└─────────────────┴──────────────────────────────────────┘
+
+✅ Total: 12 parents, 74 children
+
+📊 Indexing 74 documents...
+   Collection: legal_documents
+   Embedding dimension: 384
+✅ Vector store created with 74 documents
+🔤 Building BM25 index for 74 documents...
+✅ BM25 index ready (k1=1.5, b=0.75)
+🔄 Hybrid retriever ready (Vector: 70%, BM25: 30%)
+
+
+---
+
+### Query 1: Breach Remedies
+
+**Query:** "What remedies are available if the receiving party breaches confidentiality?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 9 child matches
+
+                                                  Retrieved Legal Contexts                                                  
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ Confidentiality and Non-Disc   │ 2.1        │ confidentiali   │ Article 2 - Obligations of Confidentiality         │
+│ 2   │ Confidentiality and Non-Disc   │ 3.1        │ confidentiali   │ Article 3 - Exceptions to Confidential Information │
+│ 3   │ Confidentiality and Non-Disc   │ 1.1        │ confidentiali   │ CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT        │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> The Receiving Party shall be liable for any breach of confidentiality, and the Disclosing Party shall be entitled to seek various remedies.
+>
+> According to **Section 4.1**: "The Receiving Party acknowledges that any breach of this Agreement would cause irreparable harm to the Disclosing Party for which monetary damages would be inadequate. Accordingly, the Disclosing Party shall be entitled to seek injunctive relief and any other equitable remedies in addition to all other remedies available at law."
+>
+> Additionally, **Section 4.2** states: "In the event of a breach or threatened breach, the Disclosing Party shall have the right to immediately seek a temporary restraining order or preliminary injunction without the necessity of posting bond or proving actual damages."
+>
+> These provisions indicate that the Disclosing Party has the right to seek injunctive relief, equitable remedies, and other remedies available at law in the event of a breach of confidentiality.
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice. Consult with a qualified legal professional for advice regarding your specific situation.*
+
+---
+
+### Query 2: Trade Secret Definition
+
+**Query:** "What constitutes a trade secret under California law?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 7 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ California Civil Code - Trad   │ 3426.1     │ confidentiali   │ CALIFORNIA CIVIL CODE - DIVISION 3, PART 4          │
+│ 2   │ Employment Agreement - TechC   │ 5.2        │ termination     │ Section 5.2 Non-Solicitation of Employees           │
+│ 3   │ California Civil Code - Trad   │ 3426.2     │ confidentiali   │ (d) "Trade secret" means information                │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> A trade secret under California law is defined as information that:
+>
+> 1. "Derives independent economic value, actual or potential, from not being generally known to the public or to other persons who can obtain economic value from its disclosure or use"
+> 2. "Is the subject of efforts that are reasonable under the circumstances to maintain its secrecy"
+>
+> **Section 3426.1(d)** - California Civil Code: "Trade secret means information, including a formula, pattern, compilation, program, device, method, technique, or process, that: (1) Derives independent economic value from not being generally known; and (2) Is the subject of efforts that are reasonable under the circumstances to maintain its secrecy."
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Query 3: Confidentiality Survival Period
+
+**Query:** "How long does the confidentiality obligation survive after termination?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 7 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ Confidentiality and Non-Disc   │ 1.1        │ confidentiali   │ CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT         │
+│ 2   │ Confidentiality and Non-Disc   │ 4.3        │ confidentiali   │ Section 4.3 The prevailing party                    │
+│ 3   │ Employment Agreement - TechC   │ 2.4        │ confidentiali   │ Section 2.4 Equity                                  │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> Based on the provided legal context, the confidentiality obligation survives termination for different periods depending on the agreement:
+>
+> **NDA - Section 5.3**: "The obligations of confidentiality shall survive termination of this Agreement for a period of three (3) years following such termination."
+>
+> **Employment Agreement - Section 3.1**: "The Employee agrees to maintain the confidentiality of all proprietary and confidential information of the Company, both during and after the term of employment. This obligation shall survive termination indefinitely."
+>
+> Note: The employment agreement imposes a more stringent obligation (indefinite) compared to the NDA (3 years).
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Query 4: Injunction Without Damages
+
+**Query:** "Can the disclosing party get an injunction without proving actual damages?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 7 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ California Civil Code - Trad   │ 3426.3     │ termination     │ Section 3426.3 - Damages                            │
+│ 2   │ California Civil Code - Trad   │ 3426.2     │ confidentiali   │ (d) "Trade secret" means information                │
+│ 3   │ Confidentiality and Non-Disc   │ 3.1        │ confidentiali   │ Article 3 - Exceptions                              │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> Yes, the disclosing party can seek an injunction without proving actual damages under certain circumstances.
+>
+> **California Civil Code - Section 3426.2(a)**: "Actual or threatened misappropriation may be enjoined."
+>
+> **NDA - Section 4.2**: "In the event of a breach or threatened breach, the Disclosing Party shall have the right to immediately seek a temporary restraining order or preliminary injunction without the necessity of posting bond or proving actual damages."
+>
+> However, the injunction may be terminated when the trade secret has ceased to exist, but may be continued for an additional reasonable period to eliminate commercial advantage derived from the misappropriation.
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Query 5: Exceptions to Confidentiality
+
+**Query:** "What are the exceptions to confidentiality obligations?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 5 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ Confidentiality and Non-Disc   │ 2.1        │ confidentiali   │ Article 2 - Obligations of Confidentiality          │
+│ 2   │ Employment Agreement - TechC   │ 2.4        │ confidentiali   │ Section 2.4 Equity                                  │
+│ 3   │ Confidentiality and Non-Disc   │ 1.1        │ confidentiali   │ CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT         │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> **NDA - Section 3.1** outlines the exceptions to confidentiality obligations. The obligations shall not apply to information that:
+>
+> - **(a)** Is or becomes publicly available through no breach by the Receiving Party
+> - **(b)** Was in the Receiving Party's possession prior to disclosure by the Disclosing Party
+> - **(c)** Is independently developed by the Receiving Party without use of or reference to the Confidential Information
+> - **(d)** Is required to be disclosed by law, regulation, or court order
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Query 6: IP Created During Employment
+
+**Query:** "What happens to intellectual property created during employment?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 7 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ Employment Agreement - TechC   │ 2.4        │ confidentiali   │ Section 2.4 Equity                                  │
+│ 2   │ California Civil Code - Trad   │ 3426.2     │ confidentiali   │ (d) "Trade secret" means information                │
+│ 3   │ Employment Agreement - TechC   │ 1.1        │ termination     │ EMPLOYMENT AGREEMENT                                │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> According to the Employment Agreement - **Section 3.2 (Intellectual Property Assignment)**:
+>
+> "The Employee agrees that all inventions, discoveries, improvements, and works of authorship created or conceived by the Employee during employment that relate to the Company's business shall be the sole and exclusive property of the Company."
+>
+> This means any intellectual property created by the Employee during their employment with TechCorp Inc. will be owned by the Company.
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Query 7: Termination for Cause
+
+**Query:** "What are the grounds for termination for cause under the employment agreement?"
+
+**Retrieved Contexts:**
+
+Retrieved 3 parent contexts from 8 child matches
+
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ #   ┃ Document                       ┃ Section    ┃ Type            ┃ Preview                                            ┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1   │ Employment Agreement - TechC   │ 1.1        │ termination     │ EMPLOYMENT AGREEMENT                                │
+│ 2   │ Confidentiality and Non-Disc   │ 3.1        │ confidentiali   │ Article 3 - Exceptions                              │
+│ 3   │ Employment Agreement - TechC   │ 4.1        │ termination     │ Article 4 - Termination                             │
+└─────┴────────────────────────────────┴────────────┴─────────────────┴────────────────────────────────────────────────────┘
+
+
+**LLM Response:**
+> The grounds for termination for cause under the employment agreement are explicitly stated in **Section 4.1**:
+>
+> The Company may terminate this Agreement immediately for cause, including but not limited to:
+> - **(a)** Material breach of this Agreement
+> - **(b)** Fraud, embezzlement, or dishonesty
+> - **(c)** Conviction of a felony
+> - **(d)** Gross negligence or willful misconduct
+> - **(e)** Violation of Company policies
+>
+> *DISCLAIMER: This response is provided for informational purposes only and does not constitute legal advice.*
+
+---
+
+### Demo Summary
+
+
+                   Demo Summary                   
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Metric             ┃ Value                     ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Documents Ingested │ 3                         │
+│ Parent Chunks      │ 12                        │
+│ Child Chunks       │ 74                        │
+│ Queries Processed  │ 7                         │
+│ LLM                │ groq/llama-3.1-8b-instant │
+│ Embedding Model    │ all-MiniLM-L6-v2 (384d)   │
+│ Retrieval Method   │ Hybrid (70% Vector/30% BM25) │
+└────────────────────┴───────────────────────────┘
+
+✅ Demo complete! Check logs/legal_rag_queries.json for query history.
+
+
+### Interactive Mode
+
+
+╭───────────────────────────────────────────────────────────────╮
+│ ⚖️  Interactive Legal Research Mode                            │
+│                                                               │
+│ Commands: help | stats | exit                                 │
+│ Example: What are the remedies for breach of confidentiality? │
+╰───────────────────────────────────────────────────────────────╯
+
+Legal Query > What are the remedies for breach of confidentiality?
+
+🔍 Query #1
+📊 Found 9 matching children → 3 parent contexts
+
+[Response with citations and disclaimer]
+
+
+
+Add this section to your README after the architecture section or before the test queries section. It shows real outputs from your working system, demonstrating its capabilities with actual formatted responses.
 ### 🧪 Edge Cases
 
-```python
+python
 "What if the breach was unintentional?"
 "Can you partially breach confidentiality?"
 "What if both parties breach at the same time?"
@@ -514,13 +856,11 @@ Here are categorized queries to test the system's capabilities:
 "Can confidentiality obligations be inherited by a successor company?"
 
 
-```
 ---
 
 ## 🧪 Running Tests
 
-```bash
-```
+
 # Run all tests
 pytest tests/ -v
 
@@ -554,31 +894,28 @@ pytest --cov=legal_rag tests/
 <details>
 <summary><b>NLTK Data Error</b></summary>
 
-```bash
+
 python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab')"
 
-```
 </details>
 
 <details>
 <summary><b>Groq Model Decommissioned</b></summary>
 
 Update `.env` to use a current model:
-```bash
+
 GROQ_MODEL=llama-3.1-8b-instant
 
 Current models: `llama-3.1-8b-instant`, `llama-3.3-70b-versatile`, `mixtral-8x7b-32768`, `gemma2-9b-it`
-```
 </details>
 
 <details>
 <summary><b>ChromaDB Import Warning</b></summary>
 
 In `legal_rag/vector_store.py`, change:
-```python
+python
 from langchain_community.vectorstores import Chroma
 
-```
 </details>
 
 <details>
@@ -627,3 +964,14 @@ If you find this project useful, please consider giving it a ⭐ star on GitHub!
 
 </div>
 
+
+This README provides:
+- Clear project overview and problem statement
+- Detailed installation instructions for all LLM providers
+- Architecture diagram showing data flow
+- Comprehensive test queries organized by category
+- Configuration reference table
+- Troubleshooting guide
+- Professional badges and formatting
+
+Replace `yourusername` with your actual GitHub username before publishing!
